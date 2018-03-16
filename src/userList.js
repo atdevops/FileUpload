@@ -7,7 +7,11 @@ let userList=()=>{
         return(
             <div>
             <li>{data.firstName} {data.lastName} </li>
-            <img className='ImageThumbnail' src={data.imagePreviewUrl} />            
+            {!data.imagePreviewUrl ? (
+             <div className='ImageThumbnail'>No Picture Available</div>
+                 ) : (
+                <img className='ImageThumbnail' src={data.imagePreviewUrl} />
+                )}     
             </div>
         );
     }):<div>user list is empty</div>;

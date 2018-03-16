@@ -57,9 +57,6 @@ class NewForm extends Component {
         if (!item.lastName) {
             errors.lastName = 'Last Name is required';
         }
-        if (!item.picture) {
-            errors.picture = 'Picture is required';
-        }
         return {
             errors,
             isValid: Object.keys(errors).length === 0
@@ -110,8 +107,6 @@ render(){
                 name='picture'
                  type="file" 
                  onChange={this.handleImageChange} />
-                  <span className="help-block"></span>
-            {!!errors.picture && <span className="errorMessage">{errors.picture}</span>}
             </div>
             <button className="submitButton" 
                  type="submit" 
