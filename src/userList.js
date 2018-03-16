@@ -6,7 +6,8 @@ let userList=()=>{
     let data=(localStorage.key("myData"))?users.map((data)=>{
         return(
             <div>
-            <li>{data.firstName} {data.lastName} </li>            
+            <li>{data.firstName} {data.lastName} </li>
+            <img className='ImageThumbnail' src={data.imagePreviewUrl} />            
             </div>
         );
     }):<div>user list is empty</div>;

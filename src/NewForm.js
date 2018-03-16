@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import  userDetails from './userList';
 import {Route} from 'react-router-dom'
+import './App.css';
 
 class NewForm extends Component {
     constructor(props){
@@ -58,31 +59,32 @@ render(){
       imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
     }
     return (
-    <div>
+        <div className="container">
         <form>
+        <div class="form-group">
             First Name: <input type='text'
                name='firstName'
+               className='form-control'
                onChange = {this.handleOnChange}
                value = {this.state.firstName} />
-                <br/>
+   
             Last Name:<input type='text'
                name='lastName'
+               className='form-control'
                onChange = {this.handleOnChange}
                value = {this.state.lastName} />
-                <br/>
+               
 
-            Picture: <input className="fileInput" 
+            Picture: <input className="form-control-file" 
                  type="file" 
                  onChange={this.handleImageChange} />
-
-                 <br/>
-                 <br/>
-
+            </div>
             <button className="submitButton" 
                  type="submit" 
+                 className="btn btn-primary"
                  onClick={this.handleSubmit}>Submit</button>
             </form>  
-        <div className="ImagePreview" >
+        <div className="img-rounded" >
           {imagePreview}
         </div>
         
