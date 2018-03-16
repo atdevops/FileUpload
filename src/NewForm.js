@@ -78,6 +78,10 @@ render(){
 
 
     return (
+        <div>
+        <div className="topText text-center">
+            <h1>Create User Profile</h1>
+        </div>
         <div className="container">
         <form className="form-signin">
         <div className="form-group">
@@ -118,6 +122,7 @@ render(){
           {imagePreview}
         </div>
         
+    </div>
     </div>
     )
 }

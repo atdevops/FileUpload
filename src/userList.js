@@ -5,7 +5,7 @@ let userList=()=>{
     var users = JSON.parse(localStorage.getItem("myData") || "[]");
     let data=(localStorage.key("myData"))?users.map((data)=>{
         return(
-            <div>
+            <div className="container topText">
             <li>{data.firstName} {data.lastName} </li>
             {!data.imagePreviewUrl ? (
              <div className='ImageThumbnail'>No Picture Available</div>
@@ -18,6 +18,9 @@ let userList=()=>{
 
     return (
         <div>
+        <div className="topText text-center">
+            <h2>User Details</h2>
+        </div>
         {data}
         <Link to="/">Back</Link>
         </div>
