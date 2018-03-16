@@ -9,3 +9,8 @@
   padding: 5px;
   width: 150px;
 }
+.errorMessage{
+  color: red;
+  font-style: italic;
+
+}

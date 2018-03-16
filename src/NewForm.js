@@ -49,7 +49,27 @@ class NewForm extends Component {
         reader.readAsDataURL(file)
       }
 
+      validate(item) {
+        let errors = {};
+        if (!item.firstName) {
+            errors.firstName = 'First Name is required';
+        }
+        if (!item.lastName) {
+            errors.lastName = 'Last Name is required';
+        }
+        if (!item.picture) {
+            errors.picture = 'Picture is required';
+        }
+        return {
+            errors,
+            isValid: Object.keys(errors).length === 0
+        };
+    }
+
 render(){
+
+    let  Item  = this.state;
+    const { errors, isValid } = this.validate(Item);
 
     let {imagePreviewUrl} = this.state;
     let imagePreview = null;
@@ -58,29 +78,44 @@ render(){
     } else {
       imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
     }
+
+
     return (
         <div className="container">
-        <form>
-        <div class="form-group">
-            First Name: <input type='text'
+        <form className="form-signin">
+        <div className="form-group">
+        <h3 className="form-signin-heading">First Name</h3>
+             <input type='text'
                name='firstName'
                className='form-control'
                onChange = {this.handleOnChange}
                value = {this.state.firstName} />
-   
-            Last Name:<input type='text'
+               <span className="help-block"></span>
+            {!!errors.firstName && <span className="errorMessage">{errors.firstName}</span>}
+        </div>
+        <div className="form-group">
+        <h3 className="form-signin-heading">Last Name</h3>
+        <input type='text'
                name='lastName'
                className='form-control'
                onChange = {this.handleOnChange}
                value = {this.state.lastName} />
-               
+                <span className="help-block"></span>
+            {!!errors.lastName && <span className="errorMessage">{errors.lastName}</span>}
+        </div>
+        <div className="form-group">
 
-            Picture: <input className="form-control-file" 
+        <h3 className="form-signin-heading">Picture</h3>
+        <input className="form-control-file" 
+                name='picture'
                  type="file" 
                  onChange={this.handleImageChange} />
+                  <span className="help-block"></span>
+            {!!errors.picture && <span className="errorMessage">{errors.picture}</span>}
             </div>
             <button className="submitButton" 
                  type="submit" 
+                 disabled={!isValid}
                  className="btn btn-primary"
                  onClick={this.handleSubmit}>Submit</button>
             </form>  
